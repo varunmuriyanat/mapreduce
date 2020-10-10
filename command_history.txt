@@ -1,0 +1,35 @@
+javac WordCount.java -cp $(hadoop classpath)
+
+ls
+
+jar cf wc.jar WordCount*.class
+
+ls
+ls *.class
+
+hdfs dfs -ls /
+hdfs dfs -ls /user/varunmuriyanat
+hdfs dfs -mkdir /user/varunmuriyanat/wordcount
+hdfs dfs -mkdir /user/varunmuriyanat/wordcount/input
+hdfs dfs -mkdir /user/varunmuriyanat/wordcount/output
+hdfs dfs -ls /user/varunmuriyanat/wordcount/output
+hdfs dfs -ls /user/varunmuriyanat/wordcount/
+
+hdfs dfs -put ~/*.txt /user/varunmuriyanat/wordcount/input/
+
+hadoop jar wc.jar WordCount /user/varunmuriyanat/wordcount/input /usr/varunmuriyanat/wordcount/output
+hadoop jar wc.jar WordCount /user/varunmuriyanat/wordcount/input /user/varunmuriyanat/wordcount/output
+
+
+hdfs dfs -ls /user/varunmuriyanat/wordcount
+hdfs dfs -ls /user/varunmuriyanat/wordcount/input
+hdfs dfs -ls /user/varunmuriyanat/wordcount/output
+hdfs dfs -ls /user/varunmuriyanat/wordcount/input
+hdfs dfs -ls /user/varunmuriyanat/wordcount/output
+hdfs dfs -ls /user/varunmuriyanat/
+hdfs dfs -ls /
+hdfs dfs -rm -r /user/varunmuriyanat/wordcount/output
+hdfs dfs -ls /user/varunmuriyanat/wordcount/output
+hdfs dfs -cat /user/varunmuriyanat/wordcount/output/part-r-00000
+hdfs dfs -cat /user/varunmuriyanat/wordcount/output/part-r-00000 | less
+hdfs dfs -cat /user/varunmuriyanat/wordcount/output/part-r-00000
